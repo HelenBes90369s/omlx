@@ -28,8 +28,9 @@ class Omlx < Formula
     log_path var/"log/omlx.log"
     error_log_path var/"log/omlx.log"
     # Use port 8082 to avoid conflict with other services on my machine
-    # Set OMLX_WORKERS=6 to match my M3 Max's performance core count
-    environment_variables PATH: std_service_path_env, OMLX_PORT: "8082", OMLX_WORKERS: "6"
+    # Set OMLX_WORKERS=8 to match my M3 Max's full performance core count
+    # (bumped from 6 after benchmarking showed better throughput at 8)
+    environment_variables PATH: std_service_path_env, OMLX_PORT: "8082", OMLX_WORKERS: "8"
   end
 
   def install
