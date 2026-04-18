@@ -27,8 +27,8 @@ class Omlx < Formula
     working_dir var
     log_path var/"log/omlx.log"
     error_log_path var/"log/omlx.log"
-    # Use a custom port to avoid conflicts with other local services
-    environment_variables PATH: std_service_path_env, OMLX_PORT: "8081"
+    # Use port 8082 to avoid conflict with other services on my machine
+    environment_variables PATH: std_service_path_env, OMLX_PORT: "8082"
   end
 
   def install
