@@ -51,15 +51,15 @@ def list_apps(config: dict) -> None:
         print("No applications registered.")
         return
     # Wider columns so long commands don't get truncated as much
-    print(f"{'Name':<25} {'Command':<50} {'Description'}")
-    print("-" * 90)
+    print(f"{'Name':<25} {'Command':<60} {'Description'}")
+    print("-" * 100)
     for name, info in sorted(apps.items()):
         cmd = info.get("command", "")
         desc = info.get("description", "")
         # Truncate long commands with ellipsis so the table stays readable
-        if len(cmd) > 48:
-            cmd = cmd[:45] + "..."
-        print(f"{name:<25} {cmd:<50} {desc}")
+        if len(cmd) > 58:
+            cmd = cmd[:55] + "..."
+        print(f"{name:<25} {cmd:<60} {desc}")
 
 
 def add_app(config: dict, name: str, command: str, description: str = "") -> None:
@@ -95,8 +95,4 @@ def launch_app(config: dict, name: str, extra_args: list) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     """Build and return the argument parser."""
-    parser = argparse.ArgumentParser(
-        prog="omlx",
-        description="omlx - Manage and launch your applications from the command line.",
-    )
-    parser.add_
+    parser = argparse.ArgumentPar
