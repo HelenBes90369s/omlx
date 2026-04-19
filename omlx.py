@@ -56,6 +56,9 @@ def list_apps(config: dict) -> None:
     for name, info in sorted(apps.items()):
         cmd = info.get("command", "")
         desc = info.get("description", "")
+        # Truncate long commands with ellipsis so the table stays readable
+        if len(cmd) > 48:
+            cmd = cmd[:45] + "..."
         print(f"{name:<25} {cmd:<50} {desc}")
 
 
@@ -96,4 +99,4 @@ def build_parser() -> argparse.ArgumentParser:
         prog="omlx",
         description="omlx - Manage and launch your applications from the command line.",
     )
-    parser.add_argument("--version", action="version", version=f"omlx {__version__}")
+    parser.add_
