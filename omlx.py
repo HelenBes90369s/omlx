@@ -57,8 +57,9 @@ def list_apps(config: dict) -> None:
         cmd = info.get("command", "")
         desc = info.get("description", "")
         # Truncate long commands with ellipsis so the table stays readable
-        if len(cmd) > 58:
-            cmd = cmd[:55] + "..."
+        # Increased truncation limit slightly so more of the command is visible
+        if len(cmd) > 65:
+            cmd = cmd[:62] + "..."
         print(f"{name:<25} {cmd:<60} {desc}")
 
 
@@ -95,4 +96,4 @@ def launch_app(config: dict, name: str, extra_args: list) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     """Build and return the argument parser."""
-    parser = argparse.ArgumentPar
+    parser = argparse.ArgumentPa
