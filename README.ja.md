@@ -81,6 +81,8 @@ pip install -e ".[mcp]"   # MCP（Model Context Protocol）サポート付き
 Python 3.10+とApple Silicon（M1/M2/M3/M4）が必要です。
 
 > **メモ:** M1 Maxで動作確認済み。uvを使った仮想環境（`uv venv && uv pip install -e .`）でインストールするとpipより大幅に速いのでおすすめです。
+>
+> **個人メモ:** M2 Proでも問題なく動作することを確認しました。uvでのインストールは特におすすめです。
 
 ## クイックスタート
 
@@ -90,10 +92,4 @@ ApplicationsフォルダからoMLXを起動します。ウェルカム画面が3
 
 <p align="center">
   <img src="docs/images/Screenshot 2026-02-10 at 00.36.32.png" alt="oMLX ウェルカム画面" width="360">
-  <img src="docs/images/Screenshot 2026-02-10 at 00.34.30.png" alt="oMLX メニューバー" width="240">
-</p>
-
-### CLI
-
-```bas
-```
+  <img src="docs
