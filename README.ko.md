@@ -81,11 +81,11 @@ pip install -e ".[mcp]"   # MCP (Model Context Protocol) 포함
 Python 3.10+와 Apple Silicon (M1/M2/M3/M4)이 필요합니다.
 
 > **개인 메모:** M2 Pro (16GB) 환경에서 테스트했습니다. 소스 설치 시 가상환경(`python -m venv .venv && source .venv/bin/activate`) 사용을 권장합니다. M3 Max (36GB) 에서도 문제없이 동작하는 것을 확인했습니다. M1 Pro (16GB)에서도 테스트해봤는데 잘 동작했습니다 — 다만 큰 모델(70B+)은 버거울 수 있으니 32B 이하 모델을 권장합니다.
+>
+> **내 환경 메모:** M2 Max (32GB)에서 사용 중. 32B 모델도 여유롭게 돌아가고, 두 개 모델을 동시에 Hot Cache에 올려둬도 안정적이었음. 개인적으로 Homebrew보다 소스 설치를 선호함 — 코드 직접 보면서 쓰기 편해서.
 
 ## 빠른 시작
 
 ### macOS 앱
 
-Applications 폴더에서 oMLX를 실행하세요. 환영 화면에서 세 단계만 따라하면 됩니다 — 모델 디렉토리 설정, 서버 시작, 첫 모델 다운로드. 끝입니다.
-
-<p align="cent
+Applications 폴더에서 oMLX를 실행하세
