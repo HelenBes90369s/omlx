@@ -30,8 +30,9 @@ class Omlx < Formula
     # Use port 8082 to avoid conflict with other services on my machine
     # Set OMLX_WORKERS=8 to match my M3 Max's full performance core count
     # (bumped from 6 after benchmarking showed better throughput at 8)
-    # Set OMLX_MAX_TOKENS=4096 to cap context length and reduce memory pressure
-    environment_variables PATH: std_service_path_env, OMLX_PORT: "8082", OMLX_WORKERS: "8", OMLX_MAX_TOKENS: "4096"
+    # Set OMLX_MAX_TOKENS=8192 - doubled from 4096 after confirming my 36GB
+    # unified memory handles longer contexts without meaningful memory pressure
+    environment_variables PATH: std_service_path_env, OMLX_PORT: "8082", OMLX_WORKERS: "8", OMLX_MAX_TOKENS: "8192"
   end
 
   def install
