@@ -32,7 +32,9 @@ class Omlx < Formula
     # (bumped from 6 after benchmarking showed better throughput at 8)
     # Set OMLX_MAX_TOKENS=8192 - doubled from 4096 after confirming my 36GB
     # unified memory handles longer contexts without meaningful memory pressure
-    environment_variables PATH: std_service_path_env, OMLX_PORT: "8082", OMLX_WORKERS: "8", OMLX_MAX_TOKENS: "8192"
+    # Set OMLX_CACHE_PROMPT=1 to enable prompt caching - noticeably faster
+    # on repeated system prompts in multi-turn conversations
+    environment_variables PATH: std_service_path_env, OMLX_PORT: "8082", OMLX_WORKERS: "8", OMLX_MAX_TOKENS: "8192", OMLX_CACHE_PROMPT: "1"
   end
 
   def install
