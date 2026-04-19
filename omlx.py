@@ -50,12 +50,13 @@ def list_apps(config: dict) -> None:
     if not apps:
         print("No applications registered.")
         return
-    print(f"{'Name':<20} {'Command':<40} {'Description'}")
-    print("-" * 80)
+    # Wider columns so long commands don't get truncated as much
+    print(f"{'Name':<25} {'Command':<50} {'Description'}")
+    print("-" * 90)
     for name, info in sorted(apps.items()):
         cmd = info.get("command", "")
         desc = info.get("description", "")
-        print(f"{name:<20} {cmd:<40} {desc}")
+        print(f"{name:<25} {cmd:<50} {desc}")
 
 
 def add_app(config: dict, name: str, command: str, description: str = "") -> None:
@@ -96,45 +97,3 @@ def build_parser() -> argparse.ArgumentParser:
         description="omlx - Manage and launch your applications from the command line.",
     )
     parser.add_argument("--version", action="version", version=f"omlx {__version__}")
-    parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG_PATH, help="Path to config file")
-
-    subparsers = parser.add_subparsers(dest="command")
-
-    subparsers.add_parser("list", help="List registered applications")
-
-    add_parser = subparsers.add_parser("add", help="Register an application")
-    add_parser.add_argument("name", help="Application name")
-    add_parser.add_argument("cmd", help="Command to execute")
-    add_parser.add_argument("--description", "-d", default="", help="Short description")
-
-    rm_parser = subparsers.add_parser("remove", help="Remove an application")
-    rm_parser.add_argument("name", help="Application name")
-
-    run_parser = subparsers.add_parser("run", help="Launch an application")
-    run_parser.add_argument("name", help="Application name")
-    run_parser.add_argument("args", nargs=argparse.REMAINDER, help="Extra arguments")
-
-    return parser
-
-
-def main() -> None:
-    """Main entry point for omlx CLI."""
-    parser = build_parser()
-    args = parser.parse_args()
-
-    config = load_config(args.config)
-
-    if args.command == "list":
-        list_apps(config)
-    elif args.command == "add":
-        add_app(config, args.name, args.cmd, args.description)
-    elif args.command == "remove":
-        remove_app(config, args.name)
-    elif args.command == "run":
-        launch_app(config, args.name, args.args)
-    else:
-        parser.print_help()
-
-
-if __name__ == "__main__":
-    main()
