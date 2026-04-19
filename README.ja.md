@@ -82,7 +82,7 @@ Python 3.10+とApple Silicon（M1/M2/M3/M4）が必要です。
 
 > **メモ:** M1 Maxで動作確認済み。uvを使った仮想環境（`uv venv && uv pip install -e .`）でインストールするとpipより大幅に速いのでおすすめです。
 >
-> **個人メモ:** M2 Proでも問題なく動作することを確認しました。uvでのインストールは特におすすめです。
+> **個人メモ:** M2 Proでも問題なく動作することを確認しました。uvでのインストールは特におすすめです。また、ソースからインストールする場合はPython 3.11を使うと依存関係の解決が安定していました（3.12ではmlxのビルドで稀にエラーが出ることがあります）。
 
 ## クイックスタート
 
@@ -91,5 +91,4 @@ Python 3.10+とApple Silicon（M1/M2/M3/M4）が必要です。
 ApplicationsフォルダからoMLXを起動します。ウェルカム画面が3つのステップを案内します — モデルディレクトリの設定、サーバー起動、最初のモデルダウンロード。以上です。
 
 <p align="center">
-  <img src="docs/images/Screenshot 2026-02-10 at 00.36.32.png" alt="oMLX ウェルカム画面" width="360">
-  <img src="docs
+  <img src="docs/images/Screenshot 2026-02-10 at 0
