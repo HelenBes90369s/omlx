@@ -67,6 +67,9 @@ def add_app(config: dict, name: str, command: str, description: str = "") -> Non
     """Register a new application."""
     if "apps" not in config:
         config["apps"] = {}
+    # Warn if overwriting an existing entry so I don't accidentally clobber things
+    if name in config["apps"]:
+        print(f"Warning: overwriting existing entry for '{name}'.")
     config["apps"][name] = {"command": command, "description": description}
     save_config(config)
     print(f"Registered '{name}' -> {command}")
@@ -95,5 +98,3 @@ def launch_app(config: dict, name: str, extra_args: list) -> None:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    """Build and return the argument parser."""
-    parser = argparse.ArgumentPa
