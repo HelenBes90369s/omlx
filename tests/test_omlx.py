@@ -45,6 +45,15 @@ class TestConfig(unittest.TestCase):
         self.assertEqual(len(config["apps"]), 1)
         self.assertEqual(config["apps"][0]["name"], "existing")
 
+    def test_save_config_writes_valid_json(self):
+        # Personal note: make sure the file is actually valid JSON after saving,
+        # not just that load_config can read it back.
+        data = {"apps": [{"name": "json-check", "url": "https://example.com"}]}
+        save_config(data, self.config_path)
+        with open(self.config_path, "r") as f:
+            raw = json.load(f)
+        self.assertEqual(raw["apps"][0]["name"], "json-check")
+
 
 class TestAppManagement(unittest.TestCase):
     def setUp(self):
@@ -88,7 +97,6 @@ class TestAppManagement(unittest.TestCase):
         add_app("app2", "https://example.com/app2", self.config_path)
         apps = list_apps(self.config_path)
         self.assertEqual(len(apps), 2)
-
-
-if __name__ == "__main__":
-    unittest.main()
+        names = [a["name"] for a in apps]
+        self.assertIn("app1", names)
+        self.assertIn("app2", names)
